@@ -1,0 +1,71 @@
+{
+  "predicates": [
+    {
+      "equals": {
+        "method": "GET",
+        "path": "/api/character/5"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "statusCode": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "<%- stringify(filename, './exampleAPI/responses/char5.json') %>"
+      }
+    }
+  ]
+},
+{
+  "predicates": [
+    {
+      "deepEquals": {
+        "method": "GET"
+      }
+    },
+    {
+      "matches": {
+        "path": "/api/character/[a-z]"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "statusCode": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "<%- stringify(filename, './exampleAPI/responses/char6.json') %>"
+      }
+    }
+  ]
+},
+{
+  "predicates": [
+    {
+      "deepEquals": {
+        "method": "GET",
+        "path": "/api/character/7"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "statusCode": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "<%- stringify(filename, './exampleAPI/responses/char7.json') %>"
+      }
+    }
+  ]
+},
+{
+  "predicates": [{"inject": "<%- stringify(filename, './exampleAPI/predicates/predicate.js') %>"}],
+  "responses": [{ "is": { "statusCode": 200 } }]
+},

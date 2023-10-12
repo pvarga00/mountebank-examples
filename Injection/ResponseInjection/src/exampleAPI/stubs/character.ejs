@@ -1,0 +1,35 @@
+{
+  "predicates": [
+    {
+      "equals": {
+        "method": "GET"
+      }
+    }
+  ],
+  "responses": [{"inject": "<%- stringify(filename, './exampleAPI/responses/response.js') %>"}]
+},
+{
+  "predicates": [
+    {
+      "deepEquals": {
+        "method": "GET"
+      }
+    },
+    {
+      "matches": {
+        "path": "/api/character/[a-z]"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "statusCode": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "<%- stringify(filename, './exampleAPI/responses/char6.json') %>"
+      }
+    }
+  ]
+},

@@ -1,0 +1,65 @@
+{
+  "predicates": [
+    {
+      "matches": {
+        "path": "/api/character/([5-9]$)"
+      }
+    }
+  ],
+  "responses": [{
+    "is": {
+      "statusCode": "${row}['code']",
+      "headers": {
+        "X-Tree": "${row}['tree']",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "randomThought": "Hello ${row}['Name'], have you done your ${row}['jobs'] today?"
+      }
+    },
+    "_behaviors": {
+      "lookup": [{
+        "key": {
+          "from": "path",
+          "using": {
+            "method": "regex",
+            "selector": "/api/character/([5-9]$)"
+          },
+          "index": 1
+        },
+        "fromDataSource": {
+          "csv": {
+            "path": "./exampleAPI/data/values.csv",
+            "keyColumn": "Char_ID"
+          }
+        },
+        "into": "${row}"
+      }]
+    }
+  }]
+},
+{
+  "predicates": [
+    {
+      "deepEquals": {
+        "method": "GET"
+      }
+    },
+    {
+      "matches": {
+        "path": "/api/character/[a-z]"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "statusCode": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "<%- stringify(filename, './exampleAPI/responses/char6.json') %>"
+      }
+    }
+  ]
+},

@@ -1,0 +1,78 @@
+{
+  "predicates": [
+    {
+      "deepEquals": {
+        "method": "GET"
+      }
+    },
+    {
+      "contains": {
+        "path": "/api/character/5"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "statusCode": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": "<%- stringify(filename, './exampleAPI/responses/char5.json') %>",
+        "_mode": "text"
+      }
+    }
+  ]
+},
+{
+  "predicates": [
+    {
+      "deepEquals": {
+        "method": "GET"
+      }
+    },
+    {
+      "matches": {
+        "path": "/api/character/[a-z]"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "statusCode": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": "<%- stringify(filename, './exampleAPI/responses/char6.json') %>",
+        "_mode": "text"
+      }
+    }
+  ]
+},
+{
+  "predicates": [
+    {
+      "deepEquals": {
+        "method": "GET"
+      }
+    },
+    {
+      "deepEquals": {
+        "path": "/api/character/7"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "statusCode": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": "<%- stringify(filename, './exampleAPI/responses/char7.json') %>",
+        "_mode": "text"
+      }
+    }
+  ]
+},

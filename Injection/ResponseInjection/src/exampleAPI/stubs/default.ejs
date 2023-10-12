@@ -1,0 +1,19 @@
+{
+  "responses": [
+    {
+      "proxy": {
+        "to": "https://rickandmortyapi.com/api/",
+        "mode": "proxyOnce",
+        "predicateGenerators": [
+          {
+            "matches": {
+              "method": true,
+              "path": true,
+              "query": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
